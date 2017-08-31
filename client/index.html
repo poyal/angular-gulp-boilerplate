@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Test App</title>
+  <!-- build:css css/bootstrap.css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <!-- endbuild -->
+
+  <!-- build:css css/app.css -->
+  <link rel="stylesheet" href="css/develop.css"/>
+  <!-- endbuild -->
+
+</head>
+<body>
+<div ui-view></div>
+
+<!-- build:js scripts/vendor.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js scripts/app.js -->
+<!-- inject:js -->
+<script src="app/app.module.js"></script>
+<script src="app/templates.module.js"></script>
+<script src="app/chart/chart.module.js"></script>
+<script src="app/core/core.module.js"></script>
+<script src="app/extra/extra.module.js"></script>
+<script src="app/main/main.module.js"></script>
+<script src="app/core/app.config.js"></script>
+<script src="app/core/config.route.js"></script>
+<script src="app/core/core.controller.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/chart/list/list.controller.js"></script>
+<script src="app/extra/list/list.controller.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
+</html>

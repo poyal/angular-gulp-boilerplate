@@ -1,0 +1,31 @@
+{
+  "name": "angular-gulp-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-string-replace": "^0.4.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
+    "map-stream": "0.0.7"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5",
+    "run-sequence": "^2.1.0"
+  }
+}
