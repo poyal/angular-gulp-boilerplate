@@ -5,9 +5,6 @@ node_modules/
 client/bower_components/
 client/app/templates.module.js
 www/
-
-.tmp
-.sass-cache
 .idea/
 
 debug.log
