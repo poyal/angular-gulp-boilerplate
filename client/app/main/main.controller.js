@@ -7,7 +7,6 @@
   MainController.$inject = [];
 
   function MainController() {
-    console.log('MainController');
     var vm = this;
     vm.title = '테스트 APP';
   }

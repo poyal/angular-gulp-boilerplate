@@ -57,7 +57,7 @@ gulp.task('optimize', ['jsLint', 'inject'], function () {
   var options = {
     // preserveComments: 'license',
     compress: false,
-    mangle: false
+    mangle: true
   };
 
   return gulp

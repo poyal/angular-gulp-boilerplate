@@ -8,7 +8,6 @@
 
   function ExtraListController() {
     var vm = this;
-    console.log('ExtraListController');
   }
 })();
 

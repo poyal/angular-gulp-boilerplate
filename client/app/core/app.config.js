@@ -8,6 +8,5 @@
     });
 
   function appConfig() {
-    console.log('app.config start');
   }
 })();

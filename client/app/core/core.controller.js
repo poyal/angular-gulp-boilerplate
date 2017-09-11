@@ -7,7 +7,6 @@
   AppController.$inject = ['$rootScope', '$state'];
 
   function AppController($rootScope, $state) {
-    console.log('AppController');
     var vm = this;
     vm.stateGo = stateGo;
     vm.manuArr = [
