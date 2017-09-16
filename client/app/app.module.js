@@ -6,7 +6,6 @@
     'app.core',
     // 'app.templates',
     'app.main',
-    'app.chart',
-    'app.extra'
+    'app.excel'
   ]);
 })();

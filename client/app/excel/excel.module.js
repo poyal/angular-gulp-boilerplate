@@ -2,18 +2,18 @@
   'use strict';
 
   angular
-    .module('app.extra', [])
+    .module('app.excel', [])
     .config(['$stateProvider', function ($stateProvider) {
       $stateProvider
-        .state('app.extra', {
+        .state('app.excel', {
           url: '/extra',
           abstract: true,
           template: '<div ui-view></div>'
         })
-        .state('app.extra.list', {
+        .state('app.excel.list', {
           url: '/list',
-          templateUrl: 'app/extra/list/list.html',
-          controller: 'ExtraListController',
+          templateUrl: 'app/excel/list/list.html',
+          controller: 'ExcelListController',
           controllerAs: 'vm'
         });
     }]);

@@ -10,8 +10,8 @@
     var vm = this;
     vm.stateGo = stateGo;
     vm.manuArr = [
-      {state: 'app.chart.list', name: 'Chart', active: false},
-      {state: 'app.extra.list', name: 'Extra', active: false}
+      {state: 'app.excel.list', name: 'Excel', active: false},
+      {state: 'app.etc.list', name: 'etc', active: false}
     ];
 
     function stateGo(state) {
