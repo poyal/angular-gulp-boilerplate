@@ -50,7 +50,6 @@
       if (field === '업체') {
         var ps = new daum.maps.services.Places();
         ps.keywordSearch(shell['업체'], function (data, status) {
-          console.log(status);
           if (status === daum.maps.services.Status.OK) {
             var modalData = {
               searchName: shell['업체'],
