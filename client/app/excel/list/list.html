@@ -1,3 +1,30 @@
 <div class="container">
-  <h1>EXTRA</h1>
+  <div class="col-lg-6 col-sm-6 col-12">
+    <h4>파일 등록</h4>
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-primary">
+            엑셀 <input type="file" import-sheet-js style="display: none;" multiple>
+        </span>
+      </label>
+      <input type="text" class="form-control" readonly>
+    </div>
+  </div>
+
+  <table class="table center">
+    <thead>
+    <tr>
+      <th ng-repeat="column in vm.tableData.columnDef">{{column.field}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="shell in vm.tableData.shellData"
+        ng-class="{'background-green': shell['번호'] !== undefined}">
+      <th ng-repeat="column in vm.tableData.columnDef"
+          ng-click="vm.shellClick(column.field, shell)">
+        {{shell[column.field]}}
+      </th>
+    </tr>
+    </tbody>
+  </table>
 </div>

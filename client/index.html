@@ -19,16 +19,24 @@
 <body>
 <div ui-view></div>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69c85b87078ecd1ddad62e33ce4913c8&libraries=services"></script>
+
 <!-- build:js scripts/vendor.js -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/ui-bootstrap-2.5.0.min.js"></script>
+<script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/xlsx.full.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->
 <!-- inject:js -->
 <script src="app/app.module.js"></script>
+<script src="app/templates.module.js"></script>
 <script src="app/core/core.module.js"></script>
 <script src="app/excel/excel.module.js"></script>
 <script src="app/main/main.module.js"></script>
@@ -36,6 +44,8 @@
 <script src="app/core/config.route.js"></script>
 <script src="app/core/core.controller.js"></script>
 <script src="app/main/main.controller.js"></script>
+<script src="app/excel/core/sheet.directive.js"></script>
+<script src="app/excel/list/business-search.controller.js"></script>
 <script src="app/excel/list/list.controller.js"></script>
 <!-- endinject -->
 <!-- endbuild -->

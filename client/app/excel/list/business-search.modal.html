@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">{{vm.items.searchName}}</h3>
+  <p>{{vm.items.searchAddr}}</p>
+</div>
+<div class="modal-body" id="modal-body">
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>업체</th>
+      <th>번호</th>
+      <th>주소</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="data in vm.items.searchData">
+      <th scope="row">{{$index + 1}}</th>
+      <td ng-click="vm.goDaumMap(data.place_url)">{{data.place_name}}</td>
+      <td>{{data.phone}}</td>
+      <td>{{data.address_name}}<br>{{data.road_address_name}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="vm.goDaumMap()">Daum Map</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">닫기</button>
+</div>
