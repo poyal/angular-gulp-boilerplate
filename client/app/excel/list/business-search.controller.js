@@ -10,7 +10,6 @@
     var vm = this;
     vm.cancel = cancel;
     vm.goDaumMap = goDaumMap;
-    console.log('items', items);
 
     vm.items = items;
 
@@ -19,7 +18,7 @@
     }
 
     function goDaumMap(url) {
-      if (url === undefined) {
+      if (url === undefined || url === '' || url === null) {
         url = 'http://map.daum.net/?q=' + items.searchName;
       }
       window.open(url);
