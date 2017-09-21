@@ -20,9 +20,17 @@
     <tbody>
     <tr ng-repeat="shell in vm.tableData.shellData"
         ng-class="{'background-green': shell['번호'] !== undefined}">
-      <th ng-repeat="column in vm.tableData.columnDef"
-          ng-click="vm.shellClick(column.field, shell)">
-        {{shell[column.field]}}
+      <th ng-click="vm.shellClick('업체', shell)">
+        {{shell['업체']}}
+      </th>
+      <th ng-click="vm.shellClick('대표', shell)">
+        {{shell['대표']}}
+      </th>
+      <th ngclipboard data-clipboard-text="{{shell['번호']}}">
+        {{shell['번호']}}
+      </th>
+      <th>
+        {{shell['주소']}}
       </th>
     </tr>
     </tbody>

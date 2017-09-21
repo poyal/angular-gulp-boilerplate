@@ -16,7 +16,7 @@
     <tr ng-repeat="data in vm.items.searchData">
       <th scope="row">{{$index + 1}}</th>
       <td ng-click="vm.goDaumMap(data.place_url)">{{data.place_name}}</td>
-      <td>{{data.phone}}</td>
+      <td ngclipboard data-clipboard-text="{{data.phone}}">{{data.phone}}</td>
       <td>{{data.address_name}}<br>{{data.road_address_name}}</td>
     </tr>
     </tbody>
