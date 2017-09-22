@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">{{vm.items.shellData['업체']}} / {{vm.items.shellData['대표']}}</h3>
+  <p>{{vm.items.shellData['주소']}}</p>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="form-group">
+    <label for="comment">메모:</label>
+    <textarea class="form-control" rows="5" id="comment" ng-model="vm.memo"></textarea>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" type="button" ng-click="vm.changeMemo()">변경</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">닫기</button>
+</div>

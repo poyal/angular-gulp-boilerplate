@@ -4,13 +4,18 @@
   angular.module('app.excel')
     .controller('ExcelListController', ExcelListController);
 
-  ExcelListController.$inject = ['$scope', '$uibModal'];
+  ExcelListController.$inject = ['$scope', '$uibModal', '$localStorage', 'Util'];
 
-  function ExcelListController($scope, $uibModal) {
+  function ExcelListController($scope, $uibModal, $localStorage, Util) {
     var vm = this;
+    var excelOpenFlag = false;
     vm.tableData = {};
 
     vm.shellClick = shellClick;
+    vm.statusChange = statusChange;
+    vm.memoChange = memoChange;
+    vm.jsonSave = jsonSave;
+    vm.jsonDelete = jsonDelete;
 
     $(document).on('change', ':file', function () {
       var input = $(this),
@@ -37,12 +42,25 @@
     $scope.$on('ExcelDataParse', function ($event, data) {
       angular.forEach(data.shellData, function (value) {
         var name = value['업체'];
-        if (name.substr(name.length - 1, 1) === ' ') {
-          value['업체'] = name.substr(0, name.length - 1);
+        if (name !== undefined) {
+          if (name.substr(name.length - 1, 1) === ' ') {
+            value['업체'] = name.substr(0, name.length - 1);
+          }
         }
+
+        if (value.status === null || value.status === undefined || value.status === '') {
+          value.status = '-';
+        }
+
+        if (value.memo === null || value.memo === undefined || value.memo === '') {
+          value.memo = '';
+        }
+
+        delete value['undefined'];
       });
 
       vm.tableData = angular.copy(data);
+      excelOpenFlag = true;
       $scope.$apply();
     });
 
@@ -80,6 +98,75 @@
         var googleSearchUrl = 'https://www.google.co.kr/search?q=' + googleSearchData;
         window.open(googleSearchUrl);
       }
+    }
+
+    /** 상태 변경 POPUP 오픈 */
+    function statusChange(index) {
+      var modalData = {
+        index: index,
+        shellData: vm.tableData.shellData[index]
+      };
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/excel/list/excel-state.modal.html',
+        controller: 'ExcelStateController',
+        controllerAs: 'vm',
+        size: 'lg',
+        resolve: {
+          items: function () {
+            return modalData;
+          }
+        }
+      });
+    }
+
+    /** 상태 변경 CALL BACK */
+    $scope.$on('StatusNameChange', function ($event, data) {
+      vm.tableData.shellData[data.index].status = data.statusName;
+    });
+
+    /** 메모 변경 POPUP 오픈 */
+    function memoChange(index) {
+      var modalData = {
+        index: index,
+        shellData: vm.tableData.shellData[index]
+      };
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/excel/list/excel-memo.modal.html',
+        controller: 'ExcelMemoController',
+        controllerAs: 'vm',
+        size: 'lg',
+        resolve: {
+          items: function () {
+            return modalData;
+          }
+        }
+      });
+    }
+
+    $scope.$on('MemoChange', function ($event, data) {
+      vm.tableData.shellData[data.index].memo = data.memo;
+    });
+
+    function jsonSave() {
+      if (excelOpenFlag) {
+        console.log('excel_' + Util.getFullTime());
+        if (vm.tableData.fileName === '' || vm.tableData.fileName === null || vm.tableData.fileName === undefined) {
+          vm.tableData.fileName = 'excel_' + Util.getFullTime();
+        }
+        console.log(vm.tableData);
+        $localStorage.excel.table.push(vm.tableData);
+        // $localStorage.excel = vm.tableData;
+      }
+    }
+
+    function jsonDelete() {
+      console.log($localStorage.excel);
     }
   }
 })();

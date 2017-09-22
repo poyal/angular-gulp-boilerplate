@@ -7,8 +7,8 @@
   <meta name="author" content="">
   <title>Test App</title>
   <!-- build:css css/bootstrap.css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
   <!-- endbuild -->
 
   <!-- build:css css/app.css -->
@@ -19,7 +19,8 @@
 <body>
 <div ui-view></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69c85b87078ecd1ddad62e33ce4913c8&libraries=services"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69c85b87078ecd1ddad62e33ce4913c8&libraries=services"></script>
 
 <!-- build:js scripts/vendor.js -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -33,6 +34,7 @@
 <script src="bower_components/clipboard/dist/clipboard.min.js"></script>
 <script src="js/ngclipboard.min.js"></script>
 <script src="js/xlsx.full.min.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->
@@ -46,9 +48,12 @@
 <script src="app/core/config.route.js"></script>
 <script src="app/core/core.controller.js"></script>
 <script src="app/main/main.controller.js"></script>
-<script src="app/excel/list/business-search.controller.js"></script>
-<script src="app/excel/list/list.controller.js"></script>
 <script src="app/excel/core/sheet.directive.js"></script>
+<script src="app/core/service/util.service.js"></script>
+<script src="app/excel/list/business-search.controller.js"></script>
+<script src="app/excel/list/excel-memo.controller.js"></script>
+<script src="app/excel/list/excel-state.controller.js"></script>
+<script src="app/excel/list/list.controller.js"></script>
 <!-- endinject -->
 <!-- endbuild -->
 

@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">{{vm.items.shellData['업체']}} / {{vm.items.shellData['대표']}}</h3>
+  <p>{{vm.items.shellData['주소']}}</p>
+</div>
+<div class="modal-body" id="modal-body">
+  <h3>현재 상태 : {{vm.items.shellData.status}}</h3>
+  <div class="btn-group btn-group-justified">
+    <a class="btn btn-default" ng-click="vm.changeStatusName('-')">-</a>
+    <a class="btn btn-warning" ng-click="vm.changeStatusName('부재')">부재</a>
+    <a class="btn btn-primary" ng-click="vm.changeStatusName('가망')">가망</a>
+    <a class="btn btn-success" ng-click="vm.changeStatusName('성공')">성공</a>
+    <a class="btn btn-danger" ng-click="vm.changeStatusName('실패')">실패</a>
+    <a class="btn btn-info" ng-click="vm.changeStatusName('해피콜')">해피콜</a>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">닫기</button>
+</div>

@@ -10,27 +10,55 @@
       <input type="text" class="form-control" readonly>
     </div>
   </div>
+  <div class="col-lg-6 col-sm-6 col-12">
+    <h4>저장된 엑셀</h4>
+    <div class="btn-group btn-group-justified">
+      <a type="button" class="btn btn-primary">열기</a>
+      <a type="button" class="btn btn-success" ng-click="vm.jsonSave()">저장</a>
+      <a type="button" class="btn btn-danger" ng-click="vm.jsonDelete()">삭제</a>
+    </div>
+  </div>
 
-  <table class="table center">
+  <table class="table center" style="margin-top: 100px">
     <thead>
     <tr>
-      <th ng-repeat="column in vm.tableData.columnDef">{{column.field}}</th>
+      <th>#</th>
+      <th>업체</th>
+      <th>대표</th>
+      <th>번호</th>
+      <th>주소</th>
+      <th>상태</th>
+      <th>메모</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="shell in vm.tableData.shellData"
         ng-class="{'background-green': shell['번호'] !== undefined}">
+      <th>{{$index +1}}</th>
       <th ng-click="vm.shellClick('업체', shell)">
         {{shell['업체']}}
       </th>
       <th ng-click="vm.shellClick('대표', shell)">
         {{shell['대표']}}
       </th>
-      <th ngclipboard data-clipboard-text="{{shell['번호']}}">
+      <th ngclipboard data-clipboard-text="{{shell['번호']}}" style="width: 120px">
         {{shell['번호']}}
       </th>
       <th>
         {{shell['주소']}}
+      </th>
+      <th style="width: 80px" ng-click="vm.statusChange($index)">
+        {{shell.status}}
+      </th>
+      <th style="width: 150px;" ng-click="vm.memoChange($index, shell.memo)">
+        <div style="width: 150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+          {{shell.memo}}
+        </div>
+      </th>
+    </tr>
+    <tr ng-show="vm.tableData.shellData === '' || vm.tableData.shellData === null || vm.tableData.shellData === undefined">
+      <th colspan="7" style="text-align: center;">
+        엑셀을 선택해 주세요.
       </th>
     </tr>
     </tbody>
