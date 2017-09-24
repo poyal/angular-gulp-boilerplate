@@ -179,7 +179,6 @@
 
         var flag = true;
         angular.forEach($localStorage.excel.table, function (value, index) {
-          console.log(value.fileName);
           if (value.fileName === vm.tableData.fileName) {
             flag = false;
             $localStorage.excel.table[index] = vm.tableData;
