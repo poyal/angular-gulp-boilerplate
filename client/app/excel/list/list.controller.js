@@ -14,6 +14,7 @@
     vm.shellClick = shellClick;
     vm.statusChange = statusChange;
     vm.memoChange = memoChange;
+    vm.jsonOpen = jsonOpen;
     vm.jsonSave = jsonSave;
     vm.jsonDelete = jsonDelete;
 
@@ -78,7 +79,7 @@
               animation: true,
               ariaLabelledBy: 'modal-title',
               ariaDescribedBy: 'modal-body',
-              templateUrl: 'app/excel/list/business-search.modal.html',
+              templateUrl: 'app/excel/business-search/business-search.modal.html',
               controller: 'BusinessSearchModalController',
               controllerAs: 'vm',
               size: 'lg',
@@ -110,7 +111,7 @@
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/list/excel-state.modal.html',
+        templateUrl: 'app/excel/excel-state/excel-state.modal.html',
         controller: 'ExcelStateController',
         controllerAs: 'vm',
         size: 'lg',
@@ -137,7 +138,7 @@
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/list/excel-memo.modal.html',
+        templateUrl: 'app/excel/excel-memo/excel-memo.modal.html',
         controller: 'ExcelMemoController',
         controllerAs: 'vm',
         size: 'lg',
@@ -153,20 +154,62 @@
       vm.tableData.shellData[data.index].memo = data.memo;
     });
 
+    function jsonOpen() {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/excel/excel-open/excel-open.modal.html',
+        controller: 'ExcelOpenController',
+        controllerAs: 'vm',
+        size: 'lg'
+      });
+    }
+
+    $scope.$on('ExcelLoad', function ($event, data) {
+      vm.tableData = data;
+      excelOpenFlag = true;
+    });
+
     function jsonSave() {
       if (excelOpenFlag) {
-        console.log('excel_' + Util.getFullTime());
         if (vm.tableData.fileName === '' || vm.tableData.fileName === null || vm.tableData.fileName === undefined) {
           vm.tableData.fileName = 'excel_' + Util.getFullTime();
         }
-        console.log(vm.tableData);
-        $localStorage.excel.table.push(vm.tableData);
-        // $localStorage.excel = vm.tableData;
+
+        var flag = true;
+        angular.forEach($localStorage.excel.table, function (value, index) {
+          console.log(value.fileName);
+          if (value.fileName === vm.tableData.fileName) {
+            flag = false;
+            $localStorage.excel.table[index] = vm.tableData;
+          }
+        });
+
+        if (flag) {
+          $localStorage.excel.table.push(vm.tableData);
+        }
+
+        Util.alert('저장 성공', '엑셀 저장에 성공하였습니다.').then(function (isConfirm) {
+          console.log(isConfirm)
+        });
+      } else {
+        Util.alert('Excel 오류', '엑셀을 불러와 주세요.').then(function (isConfirm) {
+          console.log(isConfirm)
+        });
       }
     }
 
     function jsonDelete() {
-      console.log($localStorage.excel);
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/excel/excel-delete/excel-delete.modal.html',
+        controller: 'ExcelDeleteController',
+        controllerAs: 'vm',
+        size: 'lg'
+      });
     }
   }
 })();
