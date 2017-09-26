@@ -8,7 +8,6 @@
 
   function MainController() {
     var vm = this;
-    vm.title = '테스트 APP';
   }
 })();
 

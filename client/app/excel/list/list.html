@@ -1,21 +1,28 @@
 <div class="container">
   <div class="col-lg-6 col-sm-6 col-12">
-    <h4>파일 등록</h4>
+    <h4>신규 DB</h4>
     <div class="input-group">
       <label class="input-group-btn">
-        <span class="btn btn-primary">
-            엑셀 <input type="file" import-sheet-js style="display: none;" multiple>
+        <span class="btn btn-default">
+            <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;엑셀
+          <input type="file" import-sheet-js style="display: none;" multiple>
         </span>
       </label>
       <input type="text" class="form-control" readonly>
     </div>
   </div>
   <div class="col-lg-6 col-sm-6 col-12">
-    <h4>저장된 엑셀</h4>
+    <h4>진행중 DB</h4>
     <div class="btn-group btn-group-justified">
-      <a type="button" class="btn btn-primary" ng-click="vm.jsonOpen()">열기</a>
-      <a type="button" class="btn btn-success" ng-click="vm.jsonSave()">저장</a>
-      <a type="button" class="btn btn-danger" ng-click="vm.jsonDelete()">삭제</a>
+      <a type="button" class="btn btn-default" ng-click="vm.jsonOpen()">
+        <i class="glyphicon glyphicon-floppy-open"></i>&nbsp;열기
+      </a>
+      <a type="button" class="btn btn-default" ng-click="vm.jsonSave()">
+        <i class="glyphicon glyphicon-floppy-save"></i>&nbsp;저장
+      </a>
+      <a type="button" class="btn btn-default" ng-click="vm.jsonDelete()">
+        <i class="glyphicon glyphicon-floppy-remove"></i>&nbsp;삭제
+      </a>
     </div>
   </div>
 
@@ -58,7 +65,7 @@
     </tr>
     <tr ng-show="vm.tableData.shellData === '' || vm.tableData.shellData === null || vm.tableData.shellData === undefined">
       <th colspan="7" style="text-align: center;">
-        엑셀을 선택해 주세요.
+        DB, 액셀을 선택해 주세요.
       </th>
     </tr>
     </tbody>
