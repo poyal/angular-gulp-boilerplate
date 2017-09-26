@@ -4,6 +4,45 @@
       <div class="centered">
         <img src="/img/logo2.png" height="130px"/>
         <h2><b>DB Search Tool</b></h2>
+        <table class="table center" style="margin-top: 100px;">
+          <thead>
+          <tr>
+            <th class="text-align-center">이름</th>
+            <th class="text-align-center">부재</th>
+            <th class="text-align-center">가망</th>
+            <th class="text-align-center">성공</th>
+            <th class="text-align-center">실패</th>
+            <th class="text-align-center">해피콜</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="data in vm.totalData">
+            <th class="text-align-center">
+              {{data.fileName}}
+            </th>
+            <th class="text-align-center">
+              {{data.absenceNum}}
+            </th>
+            <th class="text-align-center">
+              {{data.hopeNum}}
+            </th>
+            <th class="text-align-center">
+              {{data.successNum}}
+            </th>
+            <th class="text-align-center">
+              {{data.failNum}}
+            </th>
+            <th class="text-align-center">
+              {{data.happyCallNum}}
+            </th>
+          </tr>
+          <tr ng-show="vm.totalData.length === 0">
+            <th colspan="7" style="text-align: center;">
+              DB, 액셀을 선택해 주세요.
+            </th>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

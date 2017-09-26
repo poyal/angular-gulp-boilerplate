@@ -31,9 +31,11 @@ body {
 .centered {
     position: relative;
     display: inline-block;
-
     width: 50%;
     padding: 1em;
+}
+
+.centered h2 {
     color: orange;
 }
 
@@ -94,4 +96,8 @@ body {
 
 #footer div p {
     margin: 0 0 3px;
+}
+
+.text-align-center {
+    text-align: center;
 }
