@@ -7,14 +7,10 @@
       <ul class="nav navbar-nav">
         <li ng-repeat="menu in $root.manuArr" ng-class="{active: menu.active}">
           <a ng-click="$root.stateGo(menu.state)">
-            <span class="glyphicon glyphicon-search"></span> {{menu.name}}
+            <i class="fa fa-database" aria-hidden="true"></i> {{menu.name}}
           </a>
         </li>
       </ul>
-      <!--<ul class="nav navbar-nav navbar-right">-->
-        <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-        <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-      <!--</ul>-->
     </div>
   </div>
 </nav>
