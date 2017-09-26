@@ -190,11 +190,11 @@
         }
 
         Util.alert('저장 성공', '엑셀 저장에 성공하였습니다.').then(function (isConfirm) {
-          console.log(isConfirm)
+          console.log(isConfirm);
         });
       } else {
         Util.alert('Excel 오류', '엑셀을 불러와 주세요.').then(function (isConfirm) {
-          console.log(isConfirm)
+          console.log(isConfirm);
         });
       }
     }

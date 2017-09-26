@@ -31,7 +31,7 @@
     if ($localStorage.excel === undefined || $localStorage.excel === null || $localStorage.excel === '') {
       $localStorage.excel = {
         table: []
-      }
+      };
     }
   }
 })();
