@@ -10,7 +10,7 @@
     var vm = this;
     vm.stateGo = stateGo;
     vm.manuArr = [
-      {state: 'app.excel.list', name: 'Excel', active: false}
+      {state: 'app.excel.list', name: 'DB검색', active: false}
     ];
 
     function stateGo(state) {
