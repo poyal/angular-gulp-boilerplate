@@ -29,7 +29,6 @@
   <table class="table center" style="margin-top: 100px">
     <thead>
     <tr>
-      <th>#</th>
       <th>업체</th>
       <th>대표</th>
       <th>번호</th>
@@ -41,15 +40,15 @@
     <tbody>
     <tr ng-repeat="shell in vm.tableData.shellData"
         ng-class="{'background-green': shell['번호'] !== undefined}">
-      <th>{{$index +1}}</th>
       <th ng-click="vm.shellClick('업체', shell)">
         {{shell['업체']}}
       </th>
       <th ng-click="vm.shellClick('대표', shell)">
         {{shell['대표']}}
       </th>
-      <th ngclipboard data-clipboard-text="{{shell['번호']}}" style="width: 120px">
-        {{shell['번호']}}
+      <th style="width: 120px">
+        <!--{{shell['번호']}}-->
+        <input type="text" ng-model="shell['번호']"/>
       </th>
       <th>
         {{shell['주소']}}
