@@ -7,4 +7,5 @@ client/app/templates.module.js
 www/
 .idea/
 
+package-lock.json
 debug.log

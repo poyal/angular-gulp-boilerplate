@@ -23,7 +23,8 @@ module.exports = function () {
       client + "/app/**/*.html"
     ],
     assets: [
-      client + "/img/**/*"
+      client + "/img/**/*",
+      client + "/fonts/**/*"
     ]
   };
 

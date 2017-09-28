@@ -34,7 +34,7 @@
               data[r - 1] = {};
               for (i = 0; i < aoa[r].length; ++i) {
                 if (aoa[r][i] === null) continue;
-                data[r - 1][aoa[0][i]] = aoa[r][i]
+                data[r - 1][aoa[0][i]] = aoa[r][i];
               }
             }
 
@@ -50,6 +50,6 @@
           reader.readAsBinaryString(changeEvent.target.files[0]);
         });
       }
-    }
+    };
   }
 })();
