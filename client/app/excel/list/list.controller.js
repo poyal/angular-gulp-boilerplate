@@ -95,7 +95,7 @@
           }
         });
       } else if (field === '대표') {
-        var googleSearchData = shell['업체'] + '+' + shell['대표'] + '010';
+        var googleSearchData = shell['업체'] + '+' + shell['대표'];
         var googleSearchUrl = 'https://www.google.co.kr/search?q=' + googleSearchData;
         window.open(googleSearchUrl);
       }
