@@ -11,59 +11,38 @@
       <input type="text" class="form-control" readonly>
     </div>
   </div>
-  <div class="col-lg-6 col-sm-6 col-12">
-    <h4>진행중 DB</h4>
-    <div class="btn-group btn-group-justified">
-      <a type="button" class="btn btn-default" ng-click="vm.jsonOpen()">
-        <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;열기
-      </a>
-      <a type="button" class="btn btn-default" ng-click="vm.jsonSave()">
-        <i class="fa fa-download" aria-hidden="true"></i>&nbsp;저장
-      </a>
-      <a type="button" class="btn btn-default" ng-click="vm.jsonDelete()">
-        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;삭제
-      </a>
-    </div>
-  </div>
 
   <table class="table center" style="margin-top: 100px">
     <thead>
     <tr>
+      <th>#</th>
       <th>업체</th>
       <th>대표</th>
       <th>번호</th>
       <th>주소</th>
-      <th>상태</th>
-      <th>메모</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="shell in vm.tableData.shellData"
         ng-class="{'background-green': shell['번호'] !== undefined}">
+      <th>
+        {{$index + 2}}
+      </th>
       <th ng-click="vm.shellClick('업체', shell)">
         {{shell['업체']}}
       </th>
       <th ng-click="vm.shellClick('대표', shell)">
         {{shell['대표']}}
       </th>
-      <th style="width: 120px">
-        <!--{{shell['번호']}}-->
-        <input type="text" ng-model="shell['번호']"/>
+      <th ngclipboard data-clipboard-text="{{shell['번호']}}">
+        {{shell['번호']}}
       </th>
       <th>
         {{shell['주소']}}
       </th>
-      <th style="width: 80px" ng-click="vm.statusChange($index)">
-        {{shell.status}}
-      </th>
-      <th style="width: 150px;" ng-click="vm.memoChange($index, shell.memo)">
-        <div style="width: 150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-          {{shell.memo}}
-        </div>
-      </th>
     </tr>
     <tr ng-show="vm.tableData.shellData === '' || vm.tableData.shellData === null || vm.tableData.shellData === undefined">
-      <th colspan="7" style="text-align: center;">
+      <th colspan="5" style="text-align: center;">
         DB, 액셀을 선택해 주세요.
       </th>
     </tr>

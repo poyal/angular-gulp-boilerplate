@@ -4,19 +4,14 @@
   angular.module('app.excel')
     .controller('ExcelListController', ExcelListController);
 
-  ExcelListController.$inject = ['$scope', '$uibModal', '$localStorage', 'Util'];
+  ExcelListController.$inject = ['$scope', '$uibModal'];
 
-  function ExcelListController($scope, $uibModal, $localStorage, Util) {
+  function ExcelListController($scope, $uibModal) {
     var vm = this;
     var excelOpenFlag = false;
     vm.tableData = {};
 
     vm.shellClick = shellClick;
-    vm.statusChange = statusChange;
-    vm.memoChange = memoChange;
-    vm.jsonOpen = jsonOpen;
-    vm.jsonSave = jsonSave;
-    vm.jsonDelete = jsonDelete;
 
     $(document).on('change', ':file', function () {
       var input = $(this),
@@ -99,116 +94,6 @@
         var googleSearchUrl = 'https://www.google.co.kr/search?q=' + googleSearchData;
         window.open(googleSearchUrl);
       }
-    }
-
-    /** 상태 변경 POPUP 오픈 */
-    function statusChange(index) {
-      var modalData = {
-        index: index,
-        shellData: vm.tableData.shellData[index]
-      };
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/excel-state/excel-state.modal.html',
-        controller: 'ExcelStateController',
-        controllerAs: 'vm',
-        size: 'lg',
-        resolve: {
-          items: function () {
-            return modalData;
-          }
-        }
-      });
-    }
-
-    /** 상태 변경 CALL BACK */
-    $scope.$on('StatusNameChange', function ($event, data) {
-      vm.tableData.shellData[data.index].status = data.statusName;
-    });
-
-    /** 메모 변경 POPUP 오픈 */
-    function memoChange(index) {
-      var modalData = {
-        index: index,
-        shellData: vm.tableData.shellData[index]
-      };
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/excel-memo/excel-memo.modal.html',
-        controller: 'ExcelMemoController',
-        controllerAs: 'vm',
-        size: 'lg',
-        resolve: {
-          items: function () {
-            return modalData;
-          }
-        }
-      });
-    }
-
-    $scope.$on('MemoChange', function ($event, data) {
-      vm.tableData.shellData[data.index].memo = data.memo;
-    });
-
-    function jsonOpen() {
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/excel-open/excel-open.modal.html',
-        controller: 'ExcelOpenController',
-        controllerAs: 'vm',
-        size: 'lg'
-      });
-    }
-
-    $scope.$on('ExcelLoad', function ($event, data) {
-      vm.tableData = data;
-      excelOpenFlag = true;
-    });
-
-    function jsonSave() {
-      if (excelOpenFlag) {
-        if (vm.tableData.fileName === '' || vm.tableData.fileName === null || vm.tableData.fileName === undefined) {
-          vm.tableData.fileName = 'excel_' + Util.getFullTime();
-        }
-
-        var flag = true;
-        angular.forEach($localStorage.excel.table, function (value, index) {
-          if (value.fileName === vm.tableData.fileName) {
-            flag = false;
-            $localStorage.excel.table[index] = vm.tableData;
-          }
-        });
-
-        if (flag) {
-          $localStorage.excel.table.push(vm.tableData);
-        }
-
-        Util.alert('저장 성공', '엑셀 저장에 성공하였습니다.').then(function (isConfirm) {
-          console.log(isConfirm)
-        });
-      } else {
-        Util.alert('Excel 오류', '엑셀을 불러와 주세요.').then(function (isConfirm) {
-          console.log(isConfirm)
-        });
-      }
-    }
-
-    function jsonDelete() {
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/excel/excel-delete/excel-delete.modal.html',
-        controller: 'ExcelDeleteController',
-        controllerAs: 'vm',
-        size: 'lg'
-      });
     }
   }
 })();
