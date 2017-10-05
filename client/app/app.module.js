@@ -5,7 +5,6 @@
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
-    'ngStorage',
     'ngclipboard',
     'app.core',
     // 'app.templates',

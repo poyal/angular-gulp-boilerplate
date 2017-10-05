@@ -4,9 +4,9 @@
   angular.module('app.core')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$rootScope', '$state', '$localStorage'];
+  AppController.$inject = ['$rootScope', '$state'];
 
-  function AppController($rootScope, $state, $localStorage) {
+  function AppController($rootScope, $state) {
     var vm = this;
     vm.stateGo = stateGo;
     vm.manuArr = [
@@ -27,12 +27,6 @@
         });
       }
     });
-
-    if ($localStorage.excel === undefined || $localStorage.excel === null || $localStorage.excel === '') {
-      $localStorage.excel = {
-        table: []
-      };
-    }
   }
 })();
 
